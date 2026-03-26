@@ -33,13 +33,13 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-[#0B0E14] font-bold text-lg hover:bg-white/90 transition-all flex items-center justify-center gap-2 group">
+              <Link href="/buy" className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-[#0B0E14] font-bold text-lg hover:bg-white/90 transition-all flex items-center justify-center gap-2 group">
                 Buy Crypto
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full glass border-white/20 text-white font-bold text-lg hover:bg-white/10 transition-all">
+              </Link>
+              <Link href="/sell" className="w-full sm:w-auto px-8 py-4 rounded-full glass border-white/20 text-white font-bold text-lg hover:bg-white/10 transition-all text-center">
                 Sell Crypto
-              </button>
+              </Link>
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-8 pt-4">
@@ -107,9 +107,9 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <button className="w-full bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white font-bold py-4 rounded-xl hover:shadow-[0_0_20px_rgba(30,107,255,0.4)] transition-all">
+              <Link href="/buy" className="w-full bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white font-bold py-4 rounded-xl hover:shadow-[0_0_20px_rgba(30,107,255,0.4)] transition-all text-center block">
                 Continue
-              </button>
+              </Link>
             </div>
             
             <div className="absolute -bottom-10 -left-10 glass rounded-2xl p-4 flex items-center gap-4 animate-float">

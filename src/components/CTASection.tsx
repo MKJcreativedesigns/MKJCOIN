@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function CTASection() {
   return (
@@ -21,12 +22,12 @@ export default function CTASection() {
               Join millions of users already trusting MKJCOIN for their digital asset management. 
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 rounded-full bg-white text-[#0B0E14] font-bold text-lg hover:bg-white/90 transition-transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+              <Link href="/signup" className="px-8 py-4 rounded-full bg-white text-[#0B0E14] font-bold text-lg hover:bg-white/90 transition-transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center">
                 Create Account
-              </button>
-              <button className="px-8 py-4 rounded-full border border-white text-white font-bold text-lg hover:bg-white/10 transition-colors">
-                Contact Sales
-              </button>
+              </Link>
+              <Link href="/login" className="px-8 py-4 rounded-full border border-white text-white font-bold text-lg hover:bg-white/10 transition-colors flex items-center justify-center">
+                Sign In
+              </Link>
             </div>
             <p className="text-white/40 text-sm mt-6">It only takes 3 minutes to start.</p>
           </div>

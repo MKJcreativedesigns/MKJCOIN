@@ -21,49 +21,43 @@ export default function Footer() {
               The premium, fast, and secure platform for all your Web3 payment and cryptocurrency needs. Built for the future of finance.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
+              <a href="https://twitter.com/haryormhidey123" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Twitter className="w-5 h-5 text-white/80" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Disc className="w-5 h-5 text-white/80" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Github className="w-5 h-5 text-white/80" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
+              <a href="mailto:voiceofayomide@gmail.com" className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Mail className="w-5 h-5 text-white/80" />
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-6">Products</h4>
+            <h4 className="font-semibold text-lg mb-6 text-white">Products</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Buy Crypto</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Sell Crypto</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Crypto Wallet</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Web3 Payments</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/buy" className="text-white/60 hover:text-white transition-colors">Buy Crypto</Link></li>
+              <li><Link href="/sell" className="text-white/60 hover:text-white transition-colors">Sell Crypto</Link></li>
+              <li><Link href="/dashboard" className="text-white/60 hover:text-white transition-colors">Crypto Wallet</Link></li>
+              <li><Link href="/dashboard" className="text-white/60 hover:text-white transition-colors">Web3 Payments</Link></li>
+              <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors">Pricing</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-lg mb-6">Developers</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">API Documentation</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">SDKs</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Integration Guide</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Status</Link></li>
+              <li><Link href="/developers/docs" className="text-white/60 hover:text-white transition-colors">API Documentation</Link></li>
+              <li><Link href="/developers/sdks" className="text-white/60 hover:text-white transition-colors">SDKs</Link></li>
+              <li><Link href="/developers/guide" className="text-white/60 hover:text-white transition-colors">Integration Guide</Link></li>
+              <li><Link href="/status" className="text-white/60 hover:text-white transition-colors">Status</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold text-lg mb-6">Company</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Blog</Link></li>
-              <li><Link href="#" className="text-white/60 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/about" className="text-white/60 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/careers" className="text-white/60 hover:text-white transition-colors">Careers</Link></li>
+              <li><Link href="/blog" className="text-white/60 hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="text-white/60 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -73,9 +67,9 @@ export default function Footer() {
             &copy; {currentYear} MKJCOIN. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-white/40 text-sm hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-white/40 text-sm hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="#" className="text-white/40 text-sm hover:text-white transition-colors">Cookie Policy</Link>
+            <Link href="/privacy" className="text-white/40 text-sm hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-white/40 text-sm hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/cookie-policy" className="text-white/40 text-sm hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

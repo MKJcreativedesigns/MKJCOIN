@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// User Model - The core user entity
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  passwordHash   String
+  fullName       String
+  kycLevel       KycLevel        @default(NONE)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  wallets        Wallet[]
+  transactions   Transaction[]
+  paymentMethods PaymentMethod[]
+}
+
+// User KYC Tiers
+enum KycLevel {
+  NONE     // Not verified
+  TIER_1   // Email & Phone verified
+  TIER_2   // ID Uploaded
+  TIER_3   // Full Verification (High Limits)
+}
+
+// Wallet Model - Stores user balances
+model Wallet {
+  id             String    @id @default(uuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  asset          String    // e.g "BTC", "ETH", "USD"
+  balance        Decimal   @default(0.0) // Requires careful management for floating point errors
+  depositAddress String?   // Assigned generated deposit address for crypto
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // A specific user can only have one main balance per asset type
+  @@unique([userId, asset])
+}
+
+// Transaction Model - Immutable ledger
+model Transaction {
+  id           String        @id @default(uuid())
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  type         TxType
+  asset        String        // e.g "BTC"
+  amount       Decimal       // Exact crypto or fiat amount
+  usdValue     Decimal       // Snapshot of value in USD at time of block
+  fee          Decimal       @default(0.0)
+  status       TxStatus      @default(PENDING)
+  txHash       String?       // Corresponding blockchain txId, if applicable
+  createdAt    DateTime      @default(now())
+  completedAt  DateTime?
+}
+
+// Trading and Wallet activities
+enum TxType {
+  DEPOSIT
+  WITHDRAW
+  BUY
+  SELL
+  SWAP
+  TRANSFER
+}
+
+// Status of ledger items
+enum TxStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+// Fiat On-Ramp and Off-Ramp profiles
+model PaymentMethod {
+  id           String     @id @default(uuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  type         PmtType
+  providerData Json       // e.g Last 4 digits, expiration dates, Stripe token id
+  isDefault    Boolean    @default(false)
+  createdAt    DateTime   @default(now())
+}
+
+enum PmtType {
+  BANK_ACH
+  CREDIT_CARD
+  APPLE_PAY
+}

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Smartphone, Download, Check } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AppSection() {
   return (
@@ -43,10 +44,10 @@ export default function AppSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <button className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-white text-[#0B0E14] font-bold hover:bg-white/90 transition-all">
+              <Link href="/download" className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-white text-[#0B0E14] font-bold hover:bg-white/90 transition-all">
                 <Download className="w-5 h-5" />
                 Download App
-              </button>
+              </Link>
             </div>
           </motion.div>
           
