@@ -95,8 +95,9 @@ export default function Dashboard() {
         <aside className="w-64 border-r border-white/5 h-[calc(100vh-80px)] hidden lg:flex flex-col p-6 sticky top-20">
           <nav className="space-y-2 flex-grow">
             {sidebarLinks.map((link) => (
-              <button
+              <Link
                 key={link.name}
+                href={link.name === 'Overview' ? '/dashboard' : `/dashboard/${link.name.toLowerCase()}`}
                 onClick={() => setActiveTab(link.name)}
                 className={cn(
                   "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group",
@@ -107,7 +108,7 @@ export default function Dashboard() {
               >
                 <link.icon className={cn("w-5 h-5", activeTab === link.name ? "text-[#1E6BFF]" : "text-white/40 group-hover:text-white")} />
                 <span className="font-medium">{link.name}</span>
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -245,8 +246,8 @@ export default function Dashboard() {
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {transactions.map((tx, i) => (
-                      <tr key={i} className="group cursor-pointer">
-                        <td className="py-4">
+                      <tr key={i} className="group cursor-pointer hover:bg-white/5 transition-colors" onClick={() => window.location.href = '/dashboard/history'}>
+                        <td className="py-4 pl-4 rounded-l-2xl">
                           <div className="flex items-center gap-3">
                             <div className={cn(
                               "w-8 h-8 rounded-full flex items-center justify-center",
@@ -271,7 +272,7 @@ export default function Dashboard() {
                           </span>
                         </td>
                         <td className="py-4 text-xs text-white/50">{tx.date}</td>
-                        <td className="py-4 text-right">
+                        <td className="py-4 text-right pr-4 rounded-r-2xl">
                           <p className="text-sm font-medium">{tx.amount} {tx.asset}</p>
                           <p className="text-[10px] text-white/40">{tx.value}</p>
                         </td>

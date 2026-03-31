@@ -20,7 +20,7 @@ export default function Pricing() {
         '0.5% Trading Fee'
       ],
       cta: 'Get Started',
-      href: '/signup',
+      href: '/dashboard',
       highlighted: false
     },
     {
@@ -37,7 +37,7 @@ export default function Pricing() {
         'Custom Price Alerts'
       ],
       cta: 'Start Pro Trial',
-      href: '/signup',
+      href: '/dashboard',
       highlighted: true
     },
     {
@@ -53,7 +53,7 @@ export default function Pricing() {
         'Volume-based Fee Rebates'
       ],
       cta: 'Contact Sales',
-      href: '#',
+      href: '/dashboard',
       highlighted: false
     }
   ];
