@@ -21,12 +21,47 @@ import {
   ArrowRightLeft
 } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
+import { createClient } from '@/utils/supabase/client';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('Overview');
+  const [userName, setUserName] = useState('User');
+  const [userBalance, setUserBalance] = useState('0.00');
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function loadUserData() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Fetch Profile
+      const { data: dbUser } = await supabase
+        .from('User')
+        .select('fullName')
+        .eq('id', user.id)
+        .single();
+        
+      if (dbUser) {
+        setUserName(dbUser.fullName.split(' ')[0]);
+      }
+
+      // Fetch USD Balance
+      const { data: wallet } = await supabase
+        .from('Wallet')
+        .select('balance')
+        .eq('userId', user.id)
+        .eq('asset', 'USD')
+        .single();
+
+      if (wallet) {
+        setUserBalance(Number(wallet.balance).toLocaleString('en-US', { minimumFractionDigits: 2 }));
+      }
+    }
+    loadUserData();
+  }, []);
 
   const assets = [
     { name: 'Bitcoin', symbol: 'BTC', price: '$64,320.50', change: '+2.45%', color: '#F7931A', icon: <Bitcoin className="w-6 h-6" /> },
@@ -93,7 +128,7 @@ export default function Dashboard() {
         <main className="flex-grow p-4 md:p-8 lg:p-10 max-w-7xl mx-auto">
           <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-2xl md:text-3xl font-heading font-bold">Welcome back, Berry!</h1>
+              <h1 className="text-2xl md:text-3xl font-heading font-bold">Welcome back, {userName}!</h1>
               <p className="text-white/50 text-sm">Here's what's happening with your portfolio today.</p>
             </div>
             <div className="flex items-center gap-3">
@@ -122,7 +157,7 @@ export default function Dashboard() {
               <div className="relative z-10">
                 <p className="text-white/50 text-sm mb-1">Total Balance</p>
                 <div className="flex items-baseline gap-3 mb-6">
-                  <h2 className="text-4xl md:text-5xl font-heading font-bold">$42,850.12</h2>
+                  <h2 className="text-4xl md:text-5xl font-heading font-bold">${userBalance}</h2>
                   <span className="text-green-400 flex items-center gap-1 text-sm bg-green-400/10 px-2 py-1 rounded-lg">
                     <ArrowUpRight className="w-4 h-4" />
                     +12.5%

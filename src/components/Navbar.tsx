@@ -5,18 +5,44 @@ import { Menu, X, ChevronDown, Wallet } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const router = useRouter();
+  const supabase = createClient();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Auth Listener
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.session?.user || null);
+    };
+    checkUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      subscription.unsubscribe();
+    };
   }, []);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    router.push('/');
+  };
 
   const navLinks = [
     {
@@ -110,13 +136,26 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
-            <Link href="/login" className="text-sm font-medium text-white/80 hover:text-white transition-colors">
-              Log in
-            </Link>
-            <Link href="/signup" className="bg-white text-[#0B0E14] px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/90 transition-all flex items-center gap-2">
-              <Wallet className="w-4 h-4" />
-              Sign up
-            </Link>
+            {user ? (
+              <>
+                <Link href="/dashboard" className="text-sm font-medium text-white/80 hover:text-[#1E6BFF] transition-colors">
+                  Dashboard
+                </Link>
+                <button onClick={handleSignOut} className="bg-white/5 text-white border border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="text-sm font-medium text-white/80 hover:text-white transition-colors">
+                  Log in
+                </Link>
+                <Link href="/signup" className="bg-white text-[#0B0E14] px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/90 transition-all flex items-center gap-2">
+                  <Wallet className="w-4 h-4" />
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
 
           <button
@@ -162,20 +201,43 @@ export default function Navbar() {
             </div>
           ))}
           <div className="h-px bg-white/10 my-2" />
-          <Link 
-            href="/login" 
-            className="text-lg font-medium text-white/80 hover:text-white py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Log in
-          </Link>
-          <Link 
-            href="/signup" 
-            className="bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white px-5 py-3 rounded-xl text-lg font-semibold w-full mt-2 text-center"
-            onClick={() => setIsOpen(false)}
-          >
-            Sign up
-          </Link>
+          {user ? (
+            <>
+              <Link 
+                href="/dashboard" 
+                className="text-lg font-medium text-[#1E6BFF] hover:text-white py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Dashboard
+              </Link>
+              <button 
+                onClick={() => {
+                  handleSignOut();
+                  setIsOpen(false);
+                }}
+                className="bg-white/5 text-white border border-white/10 px-5 py-3 rounded-xl text-lg font-semibold w-full mt-2 text-center"
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link 
+                href="/login" 
+                className="text-lg font-medium text-white/80 hover:text-white py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Log in
+              </Link>
+              <Link 
+                href="/signup" 
+                className="bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white px-5 py-3 rounded-xl text-lg font-semibold w-full mt-2 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Sign up
+              </Link>
+            </>
+          )}
         </motion.div>
       )}
     </header>
