@@ -113,9 +113,9 @@ export default function SellCrypto() {
               </div>
 
               {/* Action Button */}
-              <button className="w-full py-5 bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold rounded-2xl text-lg hover:shadow-[0_0_30px_rgba(239,68,68,0.4)] transition-all flex items-center justify-center gap-3">
+              <Link href="/dashboard" className="w-full text-center py-5 bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold rounded-2xl text-lg hover:shadow-[0_0_30px_rgba(239,68,68,0.4)] transition-all block">
                 Sell BTC Now
-              </button>
+              </Link>
 
               <div className="flex items-center justify-center gap-2 text-xs text-white/30">
                 <ShieldCheck className="w-4 h-4 text-green-500/50" />

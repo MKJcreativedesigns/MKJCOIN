@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Terminal, AppWindow, Settings, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function DeveloperPlatformSection() {
   const codeSnippet = `import { MKJCoin } from '@mkjcoin/sdk';
@@ -42,22 +43,22 @@ console.log(payment.url); // Ready to launch!`;
             </p>
             
             <div className="mt-6 flex flex-col gap-4">
-              <div className="flex items-center gap-4 bg-[#0B0E14] border border-white/10 p-4 rounded-2xl hover:border-blue-500/50 transition-colors cursor-pointer group">
+              <Link href="/developers/api" className="flex items-center gap-4 bg-[#0B0E14] border border-white/10 p-4 rounded-2xl hover:border-blue-500/50 transition-colors cursor-pointer group">
                 <Terminal className="w-8 h-8 text-blue-400" />
                 <div>
                   <h4 className="font-semibold text-white group-hover:text-blue-400 transition-colors">Comprehensive APIs</h4>
                   <p className="text-sm text-white/50">Build completely custom experiences.</p>
                 </div>
                 <ChevronRight className="w-5 h-5 ml-auto text-white/20 group-hover:text-white/50" />
-              </div>
-              <div className="flex items-center gap-4 bg-[#0B0E14] border border-white/10 p-4 rounded-2xl hover:border-pink-500/50 transition-colors cursor-pointer group">
+              </Link>
+              <Link href="/developers/widgets" className="flex items-center gap-4 bg-[#0B0E14] border border-white/10 p-4 rounded-2xl hover:border-pink-500/50 transition-colors cursor-pointer group">
                 <AppWindow className="w-8 h-8 text-pink-400" />
                 <div>
                   <h4 className="font-semibold text-white group-hover:text-pink-400 transition-colors">Payment Widgets</h4>
                   <p className="text-sm text-white/50">Drop in a fully featured checkout flow.</p>
                 </div>
                 <ChevronRight className="w-5 h-5 ml-auto text-white/20 group-hover:text-white/50" />
-              </div>
+              </Link>
             </div>
           </motion.div>
           

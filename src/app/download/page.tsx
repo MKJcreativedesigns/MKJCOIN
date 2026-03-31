@@ -38,20 +38,20 @@ export default function DownloadPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#0B0E14] font-bold hover:bg-white/90 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105">
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#0B0E14] font-bold hover:bg-white/90 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105">
                   <Apple className="w-6 h-6" />
                   <div className="text-left leading-tight">
                     <div className="text-[10px] font-normal">Download on the</div>
                     <div>App Store</div>
                   </div>
-                </button>
-                <button className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl glass border-white/20 text-white font-bold hover:bg-white/10 transition-all hover:scale-105">
+                </a>
+                <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl glass border-white/20 text-white font-bold hover:bg-white/10 transition-all hover:scale-105">
                   <Smartphone className="w-6 h-6" />
                   <div className="text-left leading-tight">
                     <div className="text-[10px] font-normal">GET IT ON</div>
                     <div>Google Play</div>
                   </div>
-                </button>
+                </a>
               </div>
 
               <div className="grid grid-cols-2 gap-6 pt-8 mt-4 border-t border-white/10">

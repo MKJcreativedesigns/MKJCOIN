@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { UserPlus, UserCheck, Bitcoin, ArrowRightLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const steps = [
   {
@@ -82,9 +83,9 @@ export default function HowItWorksSection() {
                   </div>
                   <h3 className="text-2xl font-bold font-heading mb-2">Verified!</h3>
                   <p className="text-white/60 text-sm mb-8">Your account is ready for trading</p>
-                  <button className="w-full py-3 rounded-xl bg-white text-[#0B0E14] font-bold">
+                  <Link href="/buy" className="w-full py-3 rounded-xl bg-white text-[#0B0E14] font-bold block text-center">
                     Buy Bitcoin
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

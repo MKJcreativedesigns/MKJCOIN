@@ -36,7 +36,7 @@ export default function LoginPage() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-xs text-white/40 uppercase tracking-widest ml-1 font-semibold">Password</label>
-                <button type="button" className="text-[10px] text-[#1E6BFF] hover:underline uppercase tracking-wider font-bold">Forgot?</button>
+                <Link href="/login/forgot-password" className="text-[10px] text-[#1E6BFF] hover:underline uppercase tracking-wider font-bold">Forgot?</Link>
               </div>
               <div className="relative group">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 group-focus-within:text-[#1E6BFF] transition-colors" />
@@ -60,14 +60,14 @@ export default function LoginPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <button type="button" className="flex items-center justify-center gap-2 py-3 glass border-white/10 rounded-xl hover:bg-white/5 transition-all text-xs font-semibold">
+              <Link href="/dashboard" className="flex items-center justify-center gap-2 py-3 glass border-white/10 rounded-xl hover:bg-white/5 transition-all text-xs font-semibold">
                 <Chrome className="w-4 h-4" />
                 Google
-              </button>
-              <button type="button" className="flex items-center justify-center gap-2 py-3 glass border-white/10 rounded-xl hover:bg-white/5 transition-all text-xs font-semibold">
+              </Link>
+              <Link href="/dashboard" className="flex items-center justify-center gap-2 py-3 glass border-white/10 rounded-xl hover:bg-white/5 transition-all text-xs font-semibold">
                 <Github className="w-4 h-4" />
                 GitHub
-              </button>
+              </Link>
             </div>
 
             <p className="text-center text-xs text-white/40 mt-8">

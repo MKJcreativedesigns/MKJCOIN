@@ -184,9 +184,9 @@ export default function Dashboard() {
                 ))}
               </div>
 
-              <button className="w-full mt-6 py-3 border border-dashed border-white/10 rounded-xl text-xs text-white/50 hover:border-white/20 hover:text-white transition-all">
+              <Link href="/dashboard/assets" className="block w-full mt-6 py-3 border border-dashed border-white/10 rounded-xl text-center text-xs text-white/50 hover:border-white/20 hover:text-white transition-all">
                 + View all assets
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -195,7 +195,7 @@ export default function Dashboard() {
             <div className="lg:col-span-2 glass border-white/10 rounded-3xl p-6 md:p-8">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-heading font-bold text-xl">Recent Activity</h3>
-                <button className="text-xs text-[#1E6BFF] hover:underline">View all history</button>
+                <Link href="/dashboard/history" className="text-xs text-[#1E6BFF] hover:underline">View all history</Link>
               </div>
 
               <div className="overflow-x-auto">
@@ -290,9 +290,9 @@ export default function Dashboard() {
                     <span>Rate: 1 ETH = 3,450.20 USDT</span>
                     <span>Slippage: 0.5%</span>
                   </div>
-                  <button className="w-full py-4 bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(30,107,255,0.4)] transition-all">
+                  <Link href="/dashboard/swap" className="w-full block text-center py-4 bg-gradient-to-r from-[#1E6BFF] to-[#FF4FA3] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(30,107,255,0.4)] transition-all">
                     Swap Now
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
