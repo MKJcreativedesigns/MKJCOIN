@@ -24,7 +24,7 @@ export default function Navbar() {
     // Auth Listener
     const checkUser = async () => {
       const { data } = await supabase.auth.getUser();
-      setUser(data.session?.user || null);
+      setUser(data?.user || null);
     };
     checkUser();
 
